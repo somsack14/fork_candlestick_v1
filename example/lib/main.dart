@@ -152,7 +152,6 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
       if (map.containsKey("data") == true) {
         final candleTicker = CandleTickerModel.fromJson(map);
 
-        // cehck if incoming candle is an update on current last candle, or a new one
         if (candles[0].date == candleTicker.candle.date &&
             candles[0].open == candleTicker.candle.open) {
           // update last candle
@@ -288,6 +287,22 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
                   indicators: indicators,
                   candles: candles,
                   onLoadMoreCandles: loadMoreCandles,
+                  orderListOnGraph: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 40,
+                      vertical: 4,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Text("1. Buy 1920,0"),
+                        Text("2. Sell 1980,0"),
+                        Text("3. Buy 1928.0"),
+                        Text("4. Sell 1800.0"),
+                      ],
+                    ),
+                  ),
                   onRemoveIndicator: (String indicator) {
                     setState(() {
                       indicators = [...indicators];
@@ -357,25 +372,25 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
                         currentInterval,
                       ),
                     ),
-                    ToolBarAction(
-                      width: 100,
-                      onPressed: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return SymbolsSearchModal(
-                              symbols: symbols,
-                              onSelect: (value) {
-                                fetchCandles(value, currentInterval);
-                              },
-                            );
-                          },
-                        );
-                      },
-                      child: Text(
-                        currentSymbol,
-                      ),
-                    )
+                    // ToolBarAction(
+                    //   width: 100,
+                    //   onPressed: () {
+                    //     showDialog(
+                    //       context: context,
+                    //       builder: (context) {
+                    //         return SymbolsSearchModal(
+                    //           symbols: symbols,
+                    //           onSelect: (value) {
+                    //             fetchCandles(value, currentInterval);
+                    //           },
+                    //         );
+                    //       },
+                    //     );
+                    //   },
+                    //   child: Text(
+                    //     currentSymbol,
+                    //   ),
+                    // )
                   ],
                 );
               },
@@ -423,8 +438,6 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
                                           var count = v + 1;
                                           var depthColorLeft = double.tryParse(
                                               depths!.data!.bids![v][1])!;
-                                          debugPrint(
-                                              "depthColorLeft $depthColorLeft");
                                           return Padding(
                                             padding: const EdgeInsets.symmetric(
                                               vertical: 4,

@@ -49,6 +49,9 @@ class Candlesticks extends StatefulWidget {
   ///widget intervals
   final Widget? changeIntervals;
 
+  /// Widget Order
+  final Widget? orderListOnGraph;
+
   const Candlesticks({
     Key? key,
     required this.candles,
@@ -61,6 +64,7 @@ class Candlesticks extends StatefulWidget {
     this.onRemoveIndicator,
     this.style,
     required this.changeIntervals,
+    this.orderListOnGraph,
   })  : assert(candles.length == 0 || candles.length > 1,
             "Please provide at least 2 candles"),
         super(key: key);
@@ -243,6 +247,7 @@ class _CandlesticksState extends State<Candlesticks> {
                   return MobileChart(
                     style: style,
                     onRemoveIndicator: widget.onRemoveIndicator,
+                    orderListOnGraph: widget.orderListOnGraph,
                     mainWindowDataContainer: mainWindowDataContainer!,
                     chartAdjust: widget.chartAdjust,
                     onScaleUpdate: (double scale) {

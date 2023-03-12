@@ -51,6 +51,9 @@ class MobileChart extends StatefulWidget {
 
   final Function() onReachEnd;
 
+  /// Widget Order
+  final Widget? orderListOnGraph;
+
   MobileChart({
     required this.style,
     required this.onScaleUpdate,
@@ -64,6 +67,7 @@ class MobileChart extends StatefulWidget {
     required this.onReachEnd,
     required this.mainWindowDataContainer,
     required this.onRemoveIndicator,
+    required this.orderListOnGraph,
   });
 
   @override
@@ -180,19 +184,19 @@ class _MobileChartState extends State<MobileChart> {
                                   lastCandle: widget.candles[
                                       widget.index < 0 ? 0 : widget.index],
                                   onScale: (delta) {
-                                    if (manualScaleHigh == null) {
-                                      manualScaleHigh = candlesHighPrice;
-                                      manualScaleLow = candlesLowPrice;
-                                    }
-                                    setState(() {
-                                      double deltaPrice = delta /
-                                          chartHeight *
-                                          (manualScaleHigh! - manualScaleLow!);
-                                      manualScaleHigh =
-                                          manualScaleHigh! + deltaPrice;
-                                      manualScaleLow =
-                                          manualScaleLow! - deltaPrice;
-                                    });
+                                    // if (manualScaleHigh == null) {
+                                    //   manualScaleHigh = candlesHighPrice;
+                                    //   manualScaleLow = candlesLowPrice;
+                                    // }
+                                    // setState(() {
+                                    //   double deltaPrice = delta /
+                                    //       chartHeight *
+                                    //       (manualScaleHigh! - manualScaleLow!);
+                                    //   manualScaleHigh =
+                                    //       manualScaleHigh! + deltaPrice;
+                                    //   manualScaleLow =
+                                    //       manualScaleLow! - deltaPrice;
+                                    // });
                                   },
                                 ),
                                 Row(
@@ -240,31 +244,27 @@ class _MobileChartState extends State<MobileChart> {
                                                       bullColor: widget
                                                           .style.primaryBull,
                                                     ),
-                                                    if (1 == 2)
+                                                    if (widget
+                                                            .orderListOnGraph !=
+                                                        null)
                                                       Positioned(
-                                                        bottom: 10,
-                                                        right: 10,
+                                                        bottom: 2,
+                                                        right: 2,
                                                         child: Container(
-                                                          width: 200,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            border: Border.all(
-                                                              color:
-                                                                  Colors.white,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10),
                                                             ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10),
-                                                          ),
-                                                          child: Padding(
-                                                            padding:
-                                                                const EdgeInsets
-                                                                    .all(8.0),
-                                                            child: Text(
-                                                                "Your Order Trad :"),
-                                                          ),
-                                                        ),
+                                                            child: widget
+                                                                .orderListOnGraph),
                                                       )
                                                   ],
                                                 ),
