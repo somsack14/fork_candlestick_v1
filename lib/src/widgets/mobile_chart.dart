@@ -251,18 +251,6 @@ class _MobileChartState extends State<MobileChart> {
                                                         bottom: 2,
                                                         right: 2,
                                                         child: Container(
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              border:
-                                                                  Border.all(
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                            ),
                                                             child: widget
                                                                 .orderListOnGraph),
                                                       )
