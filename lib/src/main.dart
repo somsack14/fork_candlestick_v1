@@ -148,40 +148,40 @@ class _CandlesticksState extends State<Candlesticks> {
             : CandleSticksStyle.light());
     return Column(
       children: [
-        if (widget.displayZoomActions == true || widget.actions.isNotEmpty) ...[
-          ToolBar(
-            color: style.toolBarColor,
-            children: [
-              if (widget.displayZoomActions) ...[
-                ToolBarAction(
-                  onPressed: () {
-                    setState(() {
-                      candleWidth -= 2;
-                      candleWidth = max(candleWidth, 2);
-                    });
-                  },
-                  child: Icon(
-                    Icons.remove,
-                    color: style.borderColor,
-                  ),
-                ),
-                ToolBarAction(
-                  onPressed: () {
-                    setState(() {
-                      candleWidth += 2;
-                      candleWidth = min(candleWidth, 20);
-                    });
-                  },
-                  child: Icon(
-                    Icons.add,
-                    color: style.borderColor,
-                  ),
-                ),
-              ],
-              ...widget.actions
-            ],
-          ),
-        ],
+        // if (widget.displayZoomActions == true || widget.actions.isNotEmpty) ...[
+        //   ToolBar(
+        //     color: style.toolBarColor,
+        //     children: [
+        //       if (widget.displayZoomActions) ...[
+        //         ToolBarAction(
+        //           onPressed: () {
+        //             setState(() {
+        //               candleWidth -= 2;
+        //               candleWidth = max(candleWidth, 2);
+        //             });
+        //           },
+        //           child: Icon(
+        //             Icons.remove,
+        //             color: style.borderColor,
+        //           ),
+        //         ),
+        //         ToolBarAction(
+        //           onPressed: () {
+        //             setState(() {
+        //               candleWidth += 2;
+        //               candleWidth = min(candleWidth, 20);
+        //             });
+        //           },
+        //           child: Icon(
+        //             Icons.add,
+        //             color: style.borderColor,
+        //           ),
+        //         ),
+        //       ],
+        //       ...widget.actions
+        //     ],
+        //   ),
+        // ],
         widget.changeIntervals!,
         Divider(
           height: 0,
