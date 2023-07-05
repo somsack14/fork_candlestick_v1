@@ -53,6 +53,7 @@ class MobileChart extends StatefulWidget {
 
   /// Widget Order
   final Widget? orderListOnGraph;
+  final Widget? logoBanner;
 
   MobileChart({
     required this.style,
@@ -68,6 +69,7 @@ class MobileChart extends StatefulWidget {
     required this.mainWindowDataContainer,
     required this.onRemoveIndicator,
     required this.orderListOnGraph,
+    this.logoBanner,
   });
 
   @override
@@ -80,6 +82,17 @@ class _MobileChartState extends State<MobileChart> {
   bool showIndicatorNames = false;
   double? manualScaleHigh;
   double? manualScaleLow;
+
+  final List<Map<String, String>> fakeArrowTrade = [
+    {
+      'h': '30818.86000000',
+      'l': '30818.85000000',
+    },
+    {
+      'h': '30820.00000000',
+      'l': '30819.00000000',
+    },
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -169,6 +182,7 @@ class _MobileChartState extends State<MobileChart> {
                         indicatorTime: currentCandle?.date,
                         index: widget.index,
                       ),
+                      Positioned(child: widget.logoBanner!),
                       Column(
                         children: [
                           Expanded(

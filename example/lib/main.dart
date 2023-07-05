@@ -151,7 +151,6 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
 
       if (map.containsKey("data") == true) {
         final candleTicker = CandleTickerModel.fromJson(map);
-
         if (candles[0].date == candleTicker.candle.date &&
             candles[0].open == candleTicker.candle.open) {
           // update last candle
@@ -281,12 +280,14 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
             child: StreamBuilder(
               stream: _channel == null ? null : _channel!.stream,
               builder: (context, snapshot) {
+                // print("snapshot : $snapshot");
                 updateCandlesFromSnapshot(snapshot);
                 return Candlesticks(
                   key: Key(currentSymbol + currentInterval),
                   indicators: indicators,
                   candles: candles,
                   onLoadMoreCandles: loadMoreCandles,
+                  logoBanner: Center(child: Text("Binance Pro")),
                   orderListOnGraph: Padding(
                     padding: const EdgeInsets.symmetric(
                       horizontal: 40,
@@ -297,9 +298,9 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Text("1. Buy 1920,0"),
-                        Text("2. Sell 1980,0"),
-                        Text("3. Buy 1928.0"),
-                        Text("4. Sell 1800.0"),
+                        // Text("2. Sell 1980,0"),
+                        // Text("3. Buy 1928.0"),
+                        // Text("4. Sell 1800.0"),
                       ],
                     ),
                   ),
@@ -372,25 +373,25 @@ class _CandlesStickCustomState extends State<CandlesStickCustom> {
                         currentInterval,
                       ),
                     ),
-                    // ToolBarAction(
-                    //   width: 100,
-                    //   onPressed: () {
-                    //     showDialog(
-                    //       context: context,
-                    //       builder: (context) {
-                    //         return SymbolsSearchModal(
-                    //           symbols: symbols,
-                    //           onSelect: (value) {
-                    //             fetchCandles(value, currentInterval);
-                    //           },
-                    //         );
-                    //       },
-                    //     );
-                    //   },
-                    //   child: Text(
-                    //     currentSymbol,
-                    //   ),
-                    // )
+                    ToolBarAction(
+                      width: 100,
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return SymbolsSearchModal(
+                              symbols: symbols,
+                              onSelect: (value) {
+                                fetchCandles(value, currentInterval);
+                              },
+                            );
+                          },
+                        );
+                      },
+                      child: Text(
+                        currentSymbol,
+                      ),
+                    )
                   ],
                 );
               },

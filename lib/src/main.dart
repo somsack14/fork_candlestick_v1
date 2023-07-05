@@ -52,6 +52,8 @@ class Candlesticks extends StatefulWidget {
   /// Widget Order
   final Widget? orderListOnGraph;
 
+  ///Widget logo
+  final Widget? logoBanner;
   const Candlesticks({
     Key? key,
     required this.candles,
@@ -65,6 +67,7 @@ class Candlesticks extends StatefulWidget {
     this.style,
     required this.changeIntervals,
     this.orderListOnGraph,
+    this.logoBanner,
   })  : assert(candles.length == 0 || candles.length > 1,
             "Please provide at least 2 candles"),
         super(key: key);
@@ -246,6 +249,7 @@ class _CandlesticksState extends State<Candlesticks> {
                 } else {
                   return MobileChart(
                     style: style,
+                    logoBanner: widget.logoBanner,
                     onRemoveIndicator: widget.onRemoveIndicator,
                     orderListOnGraph: widget.orderListOnGraph,
                     mainWindowDataContainer: mainWindowDataContainer!,

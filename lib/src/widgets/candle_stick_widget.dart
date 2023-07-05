@@ -1,9 +1,8 @@
 import 'package:candlesticks/src/models/candle.dart';
 import 'package:flutter/material.dart';
-import '../models/candle.dart';
-import 'dart:ui' as ui;
 
 class CandleStickWidget extends LeafRenderObjectWidget {
+
   final List<Candle> candles;
   final int index;
   final double candleWidth;
@@ -14,6 +13,7 @@ class CandleStickWidget extends LeafRenderObjectWidget {
   final double priceTrade;
 
   CandleStickWidget({
+
     required this.candles,
     required this.index,
     required this.candleWidth,
@@ -101,6 +101,7 @@ class CandleStickRenderObject extends RenderBox {
     _priceTrade = priceTrade;
   }
 
+
   /// set size as large as possible
   @override
   void performLayout() {
@@ -118,7 +119,7 @@ class CandleStickRenderObject extends RenderBox {
       ..strokeWidth = 1;
 
     double x = size.width + offset.dx - (index + 0.5) * _candleWidth;
-    double price = _priceTrade;
+    // double price = _priceTrade;
     context.canvas.drawLine(
       Offset(x, offset.dy + (_high - candle.high) / range),
       Offset(x, offset.dy + (_high - candle.low) / range),
@@ -141,6 +142,15 @@ class CandleStickRenderObject extends RenderBox {
     //   15,
     //   paint,
     // );
+    //
+    // for (int i = 0; (i + 1) * _candleWidth < size.width; i++) {
+    //   // Existing code...
+    //
+    //   if (listTrade.isNotEmpty && i + _index == 0) {
+    //     paintArrow(context, offset, range);
+    //   }
+    // }
+
     if ((openCandleY - closeCandleY).abs() > 1) {
       context.canvas.drawLine(
         Offset(x, openCandleY),
