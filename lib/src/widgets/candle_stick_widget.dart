@@ -2,7 +2,6 @@ import 'package:candlesticks/src/models/candle.dart';
 import 'package:flutter/material.dart';
 
 class CandleStickWidget extends LeafRenderObjectWidget {
-
   final List<Candle> candles;
   final int index;
   final double candleWidth;
@@ -13,7 +12,6 @@ class CandleStickWidget extends LeafRenderObjectWidget {
   final double priceTrade;
 
   CandleStickWidget({
-
     required this.candles,
     required this.index,
     required this.candleWidth,
@@ -100,7 +98,6 @@ class CandleStickRenderObject extends RenderBox {
     _bullColor = bullColor;
     _priceTrade = priceTrade;
   }
-
 
   /// set size as large as possible
   @override
